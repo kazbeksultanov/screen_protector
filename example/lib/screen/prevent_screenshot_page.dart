@@ -53,13 +53,12 @@ class _PreventScreenshotPageState extends State<PreventScreenshotPage> {
     }
   }
 
-  void _preventScreenshotOn() async =>
-      await ScreenProtector.preventScreenshotOn();
+  void _preventScreenshotOn() async => await ScreenProtector.preventScreenshotOn();
 
-  void _preventScreenshotOff() async =>
-      await ScreenProtector.preventScreenshotOff();
+  void _preventScreenshotOff() async => await ScreenProtector.preventScreenshotOff();
 
   void _addListenerPreventScreenshot() async {
+    //
     ScreenProtector.addListener(() {
       // Screenshot
       debugPrint('Screenshot:');
