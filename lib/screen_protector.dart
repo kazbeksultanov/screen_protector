@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:screen_protector/extension/color_extension.dart';
-import 'package:flutter/material.dart';
 
 class ScreenProtector {
   static const MethodChannel _channel = MethodChannel('screen_protector');
@@ -43,9 +42,7 @@ class ScreenProtector {
       }
     } else if (call.method == 'onScreenRecord') {
       dynamic isCaptured = call.arguments;
-      if (null != _onScreenRecordListener &&
-          isCaptured != null &&
-          isCaptured is bool) {
+      if (null != _onScreenRecordListener && isCaptured != null && isCaptured is bool) {
         _onScreenRecordListener!(isCaptured);
       }
     }
@@ -64,6 +61,11 @@ class ScreenProtector {
   /// Supported for iOS only, do nothing when run on Android.
   static Future<void> protectDataLeakageWithBlur() async {
     return await _channel.invokeMethod('protectDataLeakageWithBlur');
+  }
+
+  /// Supported for iOS only, do nothing when run on Android.
+  static Future<void> protectDataLeakageWithBlurOff() async {
+    return await _channel.invokeMethod('protectDataLeakageWithBlurOff');
   }
 
   /// Supported for iOS only, do nothing when run on Android.
